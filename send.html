@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="peerjs.min.js"></script>
+<script type="text/javascript">
+	var peer = new Peer({});
+	peer.on('open', function(id) {
+		console.log('My peer ID is: ' + id);
+	});
+	peerID="g64eh2sdncr00000"
+	//change this id as per recieve system
+		var conn = peer.connect(peerID);
+		conn.on('open', function() {
+			// Receive messages
+			conn.on('data', function(data) {
+				console.log('Received', data);
+			});
+			
+			// Send messages
+			conn.send('Hello from phone!');
+			console.log("sent");
+		});		
+	
+</script>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
